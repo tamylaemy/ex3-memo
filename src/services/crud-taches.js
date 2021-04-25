@@ -1,5 +1,7 @@
 import firebase from 'firebase/app';
 /* Ex3 - Point E)i) */
+import {collUtil, collTaches} from  './config';
+import {instanceFirestore} from './firebase-initialisation';
 
 /**
  * Créer une nouvelle tâche pour l'utilisateur connecté
@@ -12,7 +14,7 @@ export async function creer(uid, tache) {
   // date du serveur Firestore.
   tache.date = firebase.firestore.FieldValue.serverTimestamp();
   /* Ex3 - Point E)ii) */
-  
+  return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).add(tache);
 }
 
 /**
@@ -22,7 +24,6 @@ export async function creer(uid, tache) {
  */
 export async function lireTout(uid) {
   /* Ex3 - Point E)iii) */
-  /*
   const taches = [];
   return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches)
                 .get().then(
@@ -34,5 +35,4 @@ export async function lireTout(uid) {
                 ).then(
                   () => taches
                 );
-  */
 }

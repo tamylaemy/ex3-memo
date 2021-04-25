@@ -2,6 +2,8 @@ import Tache from './Tache';
 import './Taches.scss';
 import * as crudTaches from '../services/crud-taches';
 import { useState, useEffect } from 'react';
+import formaterDateEtHeure from '../services/utilitaires';
+import { Check, Delete } from '@material-ui/icons';
 
 export default function Taches({etatTaches, utilisateur}) {
   const uid = utilisateur.uid;
